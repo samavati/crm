@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FormFieldErrorMessage } from '../shared/modules/validators/errorMessage';
 import { mobileNumberValidator } from '../shared/modules/validators/mobileNumberValidation';
 import { phoneNumberValidator } from '../shared/modules/validators/phoneNumberValidator';
+import { ContactService } from './contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -15,8 +16,7 @@ export class ContactComponent {
   isSending = false;
 
   constructor(
-    // private ticketService: TicketService,
-    // private dialog: MatDialog,
+    private contactService: ContactService,
     private snackBar: MatSnackBar,
     public errMessage: FormFieldErrorMessage
   ) { }
@@ -29,32 +29,29 @@ export class ContactComponent {
     email: new FormControl(null, Validators.email),
   });
 
-  submitForm(): void {
+  submitForm(formDirective: FormGroupDirective): void {
     this.isSending = true;
-    // this.ticketService.newTicket({
-    //   issuer: this.form.get('issuer').value,
-    //   owner: this.form.get('owner').value,
-    //   subject: this.form.get('subject').value,
-    //   content: this.form.get('content').value,
-    //   metadata: this.form.get('metadata').value,
-    //   importanceLevel: this.form.get('importanceLevel').value
-    // }).subscribe(
-    //   res => {
-    //     this.isSending = false;
-    //     this.openDialog();
-    //   },
-    //   error => {
-    //     this.isSending = false;
-    //     this.snackBar.open('در ذخیره تیکت شما خطایی پیش آمده لطفا مجدد تلاش نمایید', 'باشه', {
-    //       duration: 2000,
-    //     });
-    //   });
+    this.contactService.saveContact({
+      FirstName: this.form.get('name')?.value,
+      LastName: this.form.get('familyName')?.value,
+      MobilePhone: this.form.get('mobile')?.value,
+      WorkPhone: this.form.get('coPhone')?.value,
+      Email: this.form.get('email')?.value
+    }).subscribe(
+      res => {
+        this.isSending = false;
+        this.snackBar.open('شخص مورد نظر با موفقیت ثبت شد', 'باشه', {
+          duration: 2000,
+        });
+        this.form.reset();
+        formDirective.resetForm();
+      },
+      error => {
+        this.isSending = false;
+        this.snackBar.open('در ذخیره درخواست شما خطایی پیش آمده لطفا مجدد تلاش نمایید', 'باشه', {
+          duration: 2000,
+        });
+      });
   }
-
-  // openDialog(): void {
-  //   this.dialog.open(SuccessDialogComponent, {
-  //     width: 'auto',
-  //   });
-  // }
 
 }

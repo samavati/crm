@@ -8,11 +8,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/modules/material/material.module';
 import { ContactComponent } from './contact/contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { MatPaginatorIntl } from '@angular/material/paginator';
+import { getPersianPaginatorIntl } from './shared/persian-paginator-intl';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ContactComponent
+    ContactComponent,
+    ContactListComponent
   ],
   imports: [
     BrowserModule,
@@ -20,9 +25,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [
+    { provide: MatPaginatorIntl, useValue: getPersianPaginatorIntl() },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
