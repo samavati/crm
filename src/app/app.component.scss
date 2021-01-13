@@ -1,0 +1,36 @@
+.didar-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.didar-is-mobile .didar-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+h1.didar-app-name {
+    margin-right: 8px;
+}
+
+.didar-sidenav-container {
+    flex: 1;
+}
+
+.didar-is-mobile .didar-sidenav-container {
+    flex: 1 0 auto;
+}
+
+.didar-sidenav {
+    width: 250px;
+    border: none !important;
+}
+
+.didar-content-container {
+    min-height: calc(100vh - 3rem - 64px);
+}
