@@ -1,24 +1,29 @@
-<h1>ثبت تیکت جدید</h1>
-<form class="container-fluid mt-5" [formGroup]="form" (ngSubmit)="submitForm()">
+<h1>ثبت شخص جدید</h1>
+<form class="container mt-5" [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="row">
-        <mat-form-field appearance="fill" class="col-6">
-            <mat-label>عنوان</mat-label>
-            <input matInput formControlName="subject" required>
+        <mat-form-field appearance="fill" class="col-12 col-md-6">
+            <mat-label>نام</mat-label>
+            <input matInput formControlName="name">
         </mat-form-field>
-        <mat-form-field appearance="fill" class="col-6">
-            <mat-label>اهمیت</mat-label>
-            <mat-select formControlName="importanceLevel" required>
-                <mat-option value="LOW">کم</mat-option>
-                <mat-option value="MEDIUM">متوسط</mat-option>
-                <mat-option value="HIGH">بالا</mat-option>
-                <mat-option value="CRITICAL">خیلی مهم</mat-option>
-            </mat-select>
+        <mat-form-field appearance="fill" class="col-12 col-md-6">
+            <mat-label>نام خانوادگی</mat-label>
+            <input matInput formControlName="familyName" required>
+        </mat-form-field>
+    </div>
+    <div class="row">
+        <mat-form-field appearance="fill" class="col-12 col-md-6">
+            <mat-label>تلفن همراه</mat-label>
+            <input matInput formControlName="mobile">
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="col-12 col-md-6">
+            <mat-label>شماره شرکت</mat-label>
+            <input matInput formControlName="coPhone">
         </mat-form-field>
     </div>
     <div class="row">
         <mat-form-field appearance="fill" class="col-12">
-            <mat-label>متن تیکت</mat-label>
-            <textarea matInput style="min-height: 200px;" formControlName="content" required></textarea>
+            <mat-label>پست الکترونکی</mat-label>
+            <input matInput formControlName="email">
         </mat-form-field>
     </div>
     <div class="d-flex align-items-center">

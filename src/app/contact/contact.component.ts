@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent implements OnInit {
+export class ContactComponent {
 
   isSending = false;
 
@@ -18,12 +18,11 @@ export class ContactComponent implements OnInit {
   ) { }
 
   form: FormGroup = new FormGroup({
-    issuer: new FormControl('ticketing', Validators.required),
-    owner: new FormControl('customer@example.com', Validators.required),
-    subject: new FormControl(null, Validators.required),
-    content: new FormControl(null, Validators.required),
-    metadata: new FormControl(null),
-    importanceLevel: new FormControl(null, Validators.required)
+    name: new FormControl(null),
+    familyName: new FormControl(null, Validators.required),
+    mobile: new FormControl(null),
+    coPhone: new FormControl(null),
+    email: new FormControl(null, Validators.email),
   });
 
   submitForm(): void {

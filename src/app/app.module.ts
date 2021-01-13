@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MaterialModule } from './shared/modules/material/material.module';
 import { ContactComponent } from './contact/contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,8 @@ import { ContactComponent } from './contact/contact.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    FormsModule,
     MaterialModule
   ],
   providers: [],
