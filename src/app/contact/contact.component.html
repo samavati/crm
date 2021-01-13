@@ -16,6 +16,7 @@
         <mat-form-field appearance="fill" class="col-12 col-md-6 mb-2">
             <mat-label>تلفن همراه</mat-label>
             <input matInput formControlName="mobile" dir="ltr">
+            <mat-icon matSuffix>phone_iphone</mat-icon>
             <mat-hint>همراه با کد کشور وارد شود مثلا +98</mat-hint>
             <mat-error *ngIf="form.get('mobile')?.invalid">{{errMessage.logger(form.get('mobile'), 'تلفن همراه')}}</mat-error>
         </mat-form-field>
@@ -31,6 +32,7 @@
         <mat-form-field appearance="fill" class="col-12 mb-2">
             <mat-label>پست الکترونکی</mat-label>
             <input matInput formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
             <mat-error *ngIf="form.get('email')?.invalid">{{errMessage.logger(form.get('email'), 'پست الکترونیک')}}</mat-error>
         </mat-form-field>
     </div>
