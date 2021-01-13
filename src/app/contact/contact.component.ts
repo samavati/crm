@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormFieldErrorMessage } from '../shared/modules/validators/errorMessage';
+import { mobileNumberValidator } from '../shared/modules/validators/mobileNumberValidation';
+import { phoneNumberValidator } from '../shared/modules/validators/phoneNumberValidator';
 
 @Component({
   selector: 'app-contact',
@@ -14,14 +17,15 @@ export class ContactComponent {
   constructor(
     // private ticketService: TicketService,
     // private dialog: MatDialog,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public errMessage: FormFieldErrorMessage
   ) { }
 
   form: FormGroup = new FormGroup({
     name: new FormControl(null),
     familyName: new FormControl(null, Validators.required),
-    mobile: new FormControl(null),
-    coPhone: new FormControl(null),
+    mobile: new FormControl(null, mobileNumberValidator),
+    coPhone: new FormControl(null, phoneNumberValidator),
     email: new FormControl(null, Validators.email),
   });
 

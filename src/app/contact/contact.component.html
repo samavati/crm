@@ -1,29 +1,37 @@
 <h1>ثبت شخص جدید</h1>
 <form class="container mt-5" [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="row">
-        <mat-form-field appearance="fill" class="col-12 col-md-6">
+        <mat-form-field appearance="fill" class="col-12 col-md-6 mb-2">
             <mat-label>نام</mat-label>
             <input matInput formControlName="name">
         </mat-form-field>
-        <mat-form-field appearance="fill" class="col-12 col-md-6">
+        <mat-form-field appearance="fill" class="col-12 col-md-6 mb-2">
             <mat-label>نام خانوادگی</mat-label>
             <input matInput formControlName="familyName" required>
+            <mat-hint>وارد کردن نام خانوادگی الزامی است</mat-hint>
+            <mat-error *ngIf="form.get('familyName')?.invalid">{{errMessage.logger(form.get('familyName'), 'نام خانوادگی')}}</mat-error>
         </mat-form-field>
     </div>
     <div class="row">
-        <mat-form-field appearance="fill" class="col-12 col-md-6">
+        <mat-form-field appearance="fill" class="col-12 col-md-6 mb-2">
             <mat-label>تلفن همراه</mat-label>
-            <input matInput formControlName="mobile">
+            <input matInput formControlName="mobile" dir="ltr">
+            <mat-hint>همراه با کد کشور وارد شود مثلا +98</mat-hint>
+            <mat-error *ngIf="form.get('mobile')?.invalid">{{errMessage.logger(form.get('mobile'), 'تلفن همراه')}}</mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="col-12 col-md-6">
+        <mat-form-field appearance="fill" class="col-12 col-md-6 mb-2">
             <mat-label>شماره شرکت</mat-label>
-            <input matInput formControlName="coPhone">
+            <input matInput formControlName="coPhone" dir="ltr">
+            <mat-icon matSuffix>phone</mat-icon>
+            <mat-error *ngIf="form.get('coPhone')?.invalid">{{errMessage.logger(form.get('coPhone'), 'شماره شرکت')}}</mat-error>
+            <mat-hint>همراه با کد کشور وارد شود مثلا +98</mat-hint>
         </mat-form-field>
     </div>
-    <div class="row">
-        <mat-form-field appearance="fill" class="col-12">
+    <div class="row mb-2">
+        <mat-form-field appearance="fill" class="col-12 mb-2">
             <mat-label>پست الکترونکی</mat-label>
             <input matInput formControlName="email">
+            <mat-error *ngIf="form.get('email')?.invalid">{{errMessage.logger(form.get('email'), 'پست الکترونیک')}}</mat-error>
         </mat-form-field>
     </div>
     <div class="d-flex align-items-center">
